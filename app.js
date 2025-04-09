@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
-const port = 9000;
+const path = require('path');
+const port = 3000;
 
 // Importar rutas
 const clientesRoute = require('./routes/clientes');
@@ -12,11 +13,10 @@ app.use('/productos', productosRoute);
 
 // Ruta raíz
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/public/index.html');
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 // Iniciar servidor
 app.listen(port, () => {
   console.log(`Servidor corriendo en http://localhost:${port}`);
 });
-
